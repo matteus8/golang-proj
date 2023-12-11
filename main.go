@@ -30,7 +30,7 @@ func main() {
 	fmt.Scan(&userEmail)
 
 	//get number of tickets user wants
-	var userTickets string
+	var userTickets uint
 	fmt.Printf("Please enter how many tickets you would like...")
 	fmt.Scan(&userTickets)
 	fmt.Printf("\n\n\n")
@@ -38,5 +38,8 @@ func main() {
 	//print statement
 	fmt.Printf("User %v, %v, booked %v tickets\n", firstName, lastName, userTickets)
 	fmt.Printf("Thank you %v, %v, for booking %v tickets\n", firstName, lastName, userTickets)
-	fmt.Printf("We will send an email too %v for confirmation.", userEmail)
+	fmt.Printf("We will send an email too %v for confirmation.\n\n", userEmail)
+
+	remainingTickets = remainingTickets - userTickets
+	fmt.Printf("There are %v remaining tickets for %v conference", remainingTickets, conferenceName)
 }
