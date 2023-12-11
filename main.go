@@ -35,11 +35,16 @@ func main() {
 	fmt.Scan(&userTickets)
 	fmt.Printf("\n\n\n")
 
-	//print statement
+	//print statement for booking
 	fmt.Printf("User %v, %v, booked %v tickets\n", firstName, lastName, userTickets)
 	fmt.Printf("Thank you %v, %v, for booking %v tickets\n", firstName, lastName, userTickets)
 	fmt.Printf("We will send an email too %v for confirmation.\n\n", userEmail)
 
+	//adjust ticket booking
 	remainingTickets = remainingTickets - userTickets
 	fmt.Printf("There are %v remaining tickets for %v conference", remainingTickets, conferenceName)
+
+	//create an array with the users who bought the ticket
+	var bookings = [50]string{}
+
 }
