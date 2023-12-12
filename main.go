@@ -42,9 +42,21 @@ func main() {
 
 	//adjust ticket booking
 	remainingTickets = remainingTickets - userTickets
-	fmt.Printf("There are %v remaining tickets for %v conference", remainingTickets, conferenceName)
+	fmt.Printf("There are %v remaining tickets for %v conference\n\n", remainingTickets, conferenceName)
 
 	//create an array with the users who bought the ticket
-	var bookings = [50]string{}
+	//arrays have fixed size
+	//var allBookings = [50]string{}
+	//allBookings[25] = firstName + " " + lastName
+	//fmt.Printf("The whole array %v", allBookings)
 
+	//create a slice (an abstraction of an array) more powerfull
+
+	//define an empty array that only accepts strings
+	var allBookings = []string{}
+
+	//append users to array
+	allBookings = append(allBookings, firstName+" "+lastName)
+
+	fmt.Printf("This is the users in bookings: %v", allBookings)
 }
