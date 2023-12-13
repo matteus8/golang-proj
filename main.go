@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func main() {
 	//const states that this variable can't change in another place in the code
@@ -35,6 +38,12 @@ func main() {
 	fmt.Scan(&userTickets)
 	fmt.Printf("\n\n\n")
 
+	if userTickets >= remainingTickets {
+		fmt.Printf("We only have %v tickets remains, please try again.\n", remainingTickets)
+		continue
+		break
+	}
+
 	//print statement for booking
 	fmt.Printf("User %v, %v, booked %v tickets\n", firstName, lastName, userTickets)
 	fmt.Printf("Thank you %v, %v, for booking %v tickets\n", firstName, lastName, userTickets)
@@ -56,7 +65,21 @@ func main() {
 	var allBookings = []string{}
 
 	//append users to array
-	allBookings = append(allBookings, firstName+" "+lastName)
+	allBookings = append(allBookings, firstName+" "+lastName+",")
 
-	fmt.Printf("This is the users in bookings: %v", allBookings)
+	fmt.Printf("This is the full name in bookings: %v", allBookings)
+
+	firstNames := []string{}
+	for _, allBookings := range allBookings {
+		var names = strings.Fields(allBookings)
+		firstNames = append(firstNames, names[0])
+	}
+	fmt.Printf("This is the first name in bookings: %v", firstNames)
+
+	//if the condition is false end program
+	//you could also use bool logic here
+	if remainingTickets == 0 {
+		fmt.Printf("Our confrence is all filt up, please come back never...")
+		break
+	}
 }
