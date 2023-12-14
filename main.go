@@ -6,80 +6,75 @@ import (
 )
 
 func main() {
-	//const states that this variable can't change in another place in the code
-	var conferenceName = "'Go-lang Conference'"
-	//not const and only var... but... conferenceName := "'Go-lang Conference'" would work
+	// Define conferenceName as a constant string
+	const conferenceName = "Go-lang Conference"
+
+	// Define conferenceTicketAmount as a constant unsigned integer
 	const conferenceTicketAmount uint = 50
+
+	// Initialize remainingTickets with the initial available tickets
 	var remainingTickets uint = 50
-	//var conferenceTicketPrice = 15
 
 	fmt.Printf("\nWelcome to the %v booking application!\n", conferenceName)
-	fmt.Printf("We have a total of %v tickets, and %v avaiable.\n", conferenceTicketAmount, remainingTickets)
+	fmt.Printf("We have a total of %v tickets, and %v available.\n", conferenceTicketAmount, remainingTickets)
 	fmt.Printf("Get your tickets here.\n")
 
-	//get users first name
+	// Get user's first name
 	var firstName string
 	fmt.Printf("Please enter your first name... \n")
 	fmt.Scan(&firstName)
 
-	//get users last name
+	// Get user's last name
 	var lastName string
 	fmt.Printf("Please enter your last name...\n")
 	fmt.Scan(&lastName)
 
-	//get users email
+	// Get user's email
 	var userEmail string
 	fmt.Printf("Please enter your email..\n")
 	fmt.Scan(&userEmail)
 
-	//get number of tickets user wants
+	// Get the number of tickets the user wants
 	var userTickets uint
 	fmt.Printf("Please enter how many tickets you would like...")
 	fmt.Scan(&userTickets)
 	fmt.Printf("\n\n\n")
 
+	// Check if there are enough tickets available
 	if userTickets >= remainingTickets {
-		fmt.Printf("We only have %v tickets remains, please try again.\n", remainingTickets)
-		continue
-		break
+		fmt.Printf("We only have %v tickets remaining, please try again.\n", remainingTickets)
+		return // Use 'return' instead of 'continue' and 'break' to exit the program
 	}
 
-	//print statement for booking
+	// Print statements for booking
 	fmt.Printf("User %v, %v, booked %v tickets\n", firstName, lastName, userTickets)
 	fmt.Printf("Thank you %v, %v, for booking %v tickets\n", firstName, lastName, userTickets)
-	fmt.Printf("We will send an email too %v for confirmation.\n\n", userEmail)
+	fmt.Printf("We will send an email to %v for confirmation.\n\n", userEmail)
 
-	//adjust ticket booking
+	// Adjust remainingTickets after booking
 	remainingTickets = remainingTickets - userTickets
-	fmt.Printf("There are %v remaining tickets for %v conference\n\n", remainingTickets, conferenceName)
+	fmt.Printf("There are %v remaining tickets for the %v conference\n\n", remainingTickets, conferenceName)
 
-	//create an array with the users who bought the ticket
-	//arrays have fixed size
-	//var allBookings = [50]string{}
-	//allBookings[25] = firstName + " " + lastName
-	//fmt.Printf("The whole array %v", allBookings)
+	// Create a slice (an abstraction of an array) for storing bookings
 
-	//create a slice (an abstraction of an array) more powerfull
-
-	//define an empty array that only accepts strings
+	// Define an empty slice that only accepts strings
 	var allBookings = []string{}
 
-	//append users to array
-	allBookings = append(allBookings, firstName+" "+lastName+",")
+	// Append user's full name to the slice
+	allBookings = append(allBookings, firstName+" "+lastName)
 
-	fmt.Printf("This is the full name in bookings: %v", allBookings)
+	fmt.Printf("This is the full name in bookings: %v\n", allBookings)
 
+	// Create a slice for storing first names
 	firstNames := []string{}
-	for _, allBookings := range allBookings {
-		var names = strings.Fields(allBookings)
+	for _, booking := range allBookings {
+		var names = strings.Fields(booking)
 		firstNames = append(firstNames, names[0])
 	}
-	fmt.Printf("This is the first name in bookings: %v", firstNames)
+	fmt.Printf("This is the first name in bookings: %v\n", firstNames)
 
-	//if the condition is false end program
-	//you could also use bool logic here
+	// If there are no remaining tickets, end the program
 	if remainingTickets == 0 {
-		fmt.Printf("Our confrence is all filt up, please come back never...")
-		break
+		fmt.Printf("Our conference is fully booked. Please come back for the next one.\n")
 	}
 }
