@@ -64,7 +64,7 @@ func main() {
 	}
 
 	// Print a message when the conference is fully booked
-	fmt.Printf("Our conference is fully booked. Please come back for the next one.\n\n")
+	fmt.Printf("Our conference is fully booked. Hopefully next year is better.\n\n")
 
 	// Print the list of users
 	fmt.Println("List of Users:")
