@@ -29,6 +29,9 @@ func main() {
 	// Set the path to the templates folder
 	router.LoadHTMLGlob("templates/*")
 
+	// Set the path to the static folder
+	router.Static("/static", "./static")
+
 	// Set up routes
 	router.GET("/", showHomePage)
 	router.POST("/book", bookTickets)
