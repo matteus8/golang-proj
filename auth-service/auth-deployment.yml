@@ -13,10 +13,7 @@ spec:
         app: auth
     spec:
       containers:
-      - name: auth
-        image: your-docker-registry/auth-service:latest
+      - name: auth-container
+        image: lala21/auth-service
         ports:
-        - containerPort: 8080
-        env:
-        - name: DATABASE_URL
-          value: "postgresql://db-user:db-password@db-host:5432/db-name"
+        - containerPort: 8081

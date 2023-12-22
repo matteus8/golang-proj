@@ -13,10 +13,7 @@ spec:
         app: product
     spec:
       containers:
-      - name: product
-        image: your-docker-registry/product-service:latest
+      - name: product-container
+        image: lala27/product-service:1.1  # Update this with the correct image tag
         ports:
-        - containerPort: 8080
-        env:
-        - name: DATABASE_URL
-          value: "postgresql://db-user:db-password@db-host:5432/db-name"
+        - containerPort: 8082

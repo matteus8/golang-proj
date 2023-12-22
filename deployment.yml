@@ -1,19 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: bookingapp
+  name: booking-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: bookingapp
+      app: booking
   template:
     metadata:
       labels:
-        app: bookingapp
+        app: booking
     spec:
       containers:
-      - name: bookingapp
-        image: lala27/conf-booking:latest
+      - name: booking-container
+        image: lala27/newbooking:latest
         ports:
         - containerPort: 8080
+      imagePullSecrets:
+      - name: my-new-docker-registry-secret
