@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.ConferenceName}} Booking</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>Welcome to the {{.ConferenceName}} Booking Application!</h1>
+    <p>We have a total of {{.ConferenceCapacity}} tickets, and {{.RemainingTickets}} available.</p>
+    <p>Get your tickets here.</p>
+    <form action="/book" method="post">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required><br>
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+        <label for="tickets">Number of Tickets:</label>
+        <input type="number" id="tickets" name="tickets" required><br>
+        <button type="submit">Book Tickets</button>
+    </form>
+</body>
+</html>
