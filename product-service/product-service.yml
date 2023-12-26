@@ -3,9 +3,10 @@ kind: Service
 metadata:
   name: product-service
 spec:
+  type: NodePort
+  ports:
+    - targetPort: 8082 #pod hosting the app
+      port: 8082 #this is the service port connecting to app
+      nodePort: 30030 #this is the port on the node
   selector:
     app: product
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 8080

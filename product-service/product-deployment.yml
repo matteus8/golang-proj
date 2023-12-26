@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: product-container
-        image: lala27/product-service:1.1  # Update this with the correct image tag
+        image: lala27/product-service:latest
         ports:
         - containerPort: 8082

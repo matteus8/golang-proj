@@ -2,10 +2,12 @@ apiVersion: v1
 kind: Service
 metadata:
   name: auth-service
+
 spec:
+  type: NodePort
+  ports:
+    - targetPort: 8081 #pod hosting the app
+      port: 8080 #this is the service port connecting to app
+      nodePort: 30011 #this is the port on the node
   selector:
     app: auth
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 8080
